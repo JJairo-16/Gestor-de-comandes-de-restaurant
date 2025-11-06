@@ -10,7 +10,12 @@ Es tracta d'un programa creat per gestionar els tiquets del restaurant.
 
 ## Com funciona?
 
-xxx
+Mostra un menú amb les següents opcions:
+
+* **Sortir:** Finalitza el programa.
+* **Crear nova comanda:** Permet crear una nova comanda.
+* **Modificar comanda:** Permet afegir línies de comanda.
+* **Veure tiquet:** Permet veure el tiquet de la comanda actual.
 
 ---
 

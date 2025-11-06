@@ -2,6 +2,7 @@ package services;
 
 public class TicketManager {
     // * Ticket
+    private String clientName;
     private String ticketCode;
     private double baseTotal;
     
@@ -16,13 +17,14 @@ public class TicketManager {
     /**
      * Crea un nou tiquet i elimina l'anterior.
      */
-    public void newTicket() {
+    public void newTicket(String clientName) {
+        this.clientName = clientName;
         ticketCode = "";
         baseTotal = 0;
     }
 
     public boolean existsTicket() {
-        return ticketCode != null;
+        return !(ticketCode == null || ticketCode.isEmpty());
     }
 
     /**
@@ -54,6 +56,9 @@ public class TicketManager {
         sb.append("================================================").append("\n");
         sb.append(head).append("\n");
         sb.append("================================================").append("\n\n");
+
+        // Client
+        sb.append("Client: " + clientName + "\n\n");
 
         // Cap
         sb.append(String.format("%-10s %5s %10s %5s %10s %5s%n",
