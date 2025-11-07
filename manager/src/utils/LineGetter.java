@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.Scanner;
+import utils.ui.Prettier;
 
 public class LineGetter {
     // #region Regles
@@ -29,7 +30,7 @@ public class LineGetter {
             input = scanner.nextLine();
 
             if (input.isBlank()) {
-                System.out.println("\nEl nom no pot estar en blanc. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("El nom no pot estar en blanc. Si us plau, torni a intentar-ho.");
                 continue;
             }
 
@@ -39,7 +40,8 @@ public class LineGetter {
                 return input;
             }
 
-            System.out.printf("%nLa longitud del nom introduït està fora del rang permès (%d-%d caràcters). Si us plau, torni a intentar-ho.%n%n", MIN_CLIENT_NAME_LEN, MAX_CLIENT_NAME_LEN);
+            String msg = String.format("La longitud del nom introduït està fora del rang permès (%d-%d caràcters). Si us plau, torni a intentar-ho.", MIN_CLIENT_NAME_LEN, MAX_CLIENT_NAME_LEN);
+            Prettier.warn(msg);
         }
     }
 
@@ -54,7 +56,7 @@ public class LineGetter {
             input = scanner.nextLine();
 
             if (input.isBlank()) {
-                System.out.println("\nEl nom no pot estar en blanc. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("El nom no pot estar en blanc. Si us plau, torni a intentar-ho.");
                 continue;
             }
 
@@ -64,7 +66,8 @@ public class LineGetter {
                 return input;
             }
 
-            System.out.printf("%nLa longitud del nom introduït està fora del rang permès (%d-%d caràcters). Si us plau, torni a intentar-ho.%n%n", MIN_PRODUCT_NAME_LEN, MAX_PRODUCT_NAME_LEN);
+            String msg = String.format("La longitud del nom introduït està fora del rang permès (%d-%d caràcters). Si us plau, torni a intentar-ho.", MIN_PRODUCT_NAME_LEN, MAX_PRODUCT_NAME_LEN);
+            Prettier.warn(msg);
         }
     }
 
@@ -78,7 +81,7 @@ public class LineGetter {
             input = scanner.nextLine();
 
             if (input.isBlank()) {
-                System.out.println("\nEl preu del producte no pot estar en blanc. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("El preu del producte no pot estar en blanc. Si us plau, torni a intentar-ho.");
                 continue;
             }
 
@@ -88,7 +91,7 @@ public class LineGetter {
                 value = Double.parseDouble(input);
 
                 if (value < 0) {
-                    System.out.print("\nEl preu del producte no pot ser negatiu. Si us plau, torni a intentar-ho.\n");
+                    Prettier.warn("El preu del producte no pot ser negatiu. Si us plau, torni a intentar-ho.");
                     continue;
                 }
 
@@ -97,9 +100,9 @@ public class LineGetter {
                 return value;
 
             } catch (NumberFormatException e) {
-                System.out.print("\nEl format del preu introduït no és valid. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("El format del preu introduït no és valid. Si us plau, torni a intentar-ho.");
             } catch (Exception e) {
-                System.out.println("\nHa ocorregut un error desconegut. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("Ha ocorregut un error desconegut. Si us plau, torni a intentar-ho.");
             }
         }
     }
@@ -114,7 +117,7 @@ public class LineGetter {
             input = scanner.nextLine();
 
             if (input.isBlank()) {
-                System.out.print("\nLa quantitat d'unitats no pot estar en blanc. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("La quantitat d'unitats no pot estar en blanc. Si us plau, torni a intentar-ho.");
                 continue;
             }
 
@@ -124,16 +127,16 @@ public class LineGetter {
                 value = Integer.parseInt(input);
 
                 if (value < 1) {
-                    System.out.print("\nLa quantitat d'unitats no pot ser menor a 1. Si us plau, torni a intentar-ho.\n");
+                    Prettier.warn("La quantitat d'unitats no pot ser menor a 1. Si us plau, torni a intentar-ho.");
                     continue;
                 }
 
                 return value;
 
             } catch (NumberFormatException e) {
-                System.out.print("\nEl format del nombre introduït no és valid. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("El format del nombre introduït no és valid. Si us plau, torni a intentar-ho.");
             } catch (Exception e) {
-                System.out.println("\nHa ocorregut un error desconegut. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("Ha ocorregut un error desconegut. Si us plau, torni a intentar-ho.");
             }
         }
     }

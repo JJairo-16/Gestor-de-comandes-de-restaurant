@@ -2,8 +2,9 @@ import services.TicketManager;
 
 import utils.ui.TicketMenu;
 import utils.LineGetter;
-
+import utils.ui.Ansi;
 import utils.ui.Cleaner;
+import utils.ui.Prettier;
 
 public class App {
     public static void main(String[] args) {
@@ -99,17 +100,13 @@ public class App {
         }
 
         System.out.println();
-        System.out.println("FINS LA PROPERA!");
+        System.out.println(Ansi.BOLD + Ansi.MAGENTA + "FINS LA PROPERA!" + Ansi.RESET);
+        System.out.println();
     }
 
     /** Mostra el missatge corresponent si no hi ha tiquet. */
     private void ticketNotExists() {
-        System.out.println();
-        
-        System.out.println("Aquesta opció no està disponible fins que creï una comanda (opció 1). Si us plau, creï una prèviament.");
-
-        System.out.println();
-
+        Prettier.warn("Aquesta opció no està disponible fins que creï una comanda (opció 1). Si us plau, creï una prèviament.");
         TicketMenu.pause();
     }
 

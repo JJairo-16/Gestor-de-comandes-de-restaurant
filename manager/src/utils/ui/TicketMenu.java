@@ -20,7 +20,7 @@ public class TicketMenu {
 
             // * Validació inicial
             if (input.isBlank()) {
-                System.out.println("\nLa resposta no pot estar en blanc. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("La resposta no pot estar en blanc. Si us plau, torni a intentar-ho.");
                 continue;
             }
 
@@ -70,7 +70,7 @@ public class TicketMenu {
 
             // * Validació inicial
             if (input.isBlank()) {
-                System.out.println("\nL'opció a elegir no por estar en blanc. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("L'opció a elegir no por estar en blanc. Si us plau, torni a intentar-ho.");
                 continue;
             }
 
@@ -83,12 +83,13 @@ public class TicketMenu {
                     return value;
                 }
 
-                System.out.printf("%nL'opció elegida està fora del rang permès (%d-%d). Si us plau, torni a intentar-ho.%n", min, max);
+                String msg = String.format("L'opció elegida està fora del rang permès (%d-%d). Si us plau, torni a intentar-ho.", min, max);
+                Prettier.warn(msg);
 
             } catch (NumberFormatException e) {
-                System.out.println("\nEl format de l'opció introduïda no es valid. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("El format de l'opció introduïda no es valid. Si us plau, torni a intentar-ho.");
             } catch (Exception e) {
-                System.out.println("\nHa ocorregut un error desconegut. Si us plau, torni a intentar-ho.\n");
+                Prettier.warn("Ha ocorregut un error desconegut. Si us plau, torni a intentar-ho.");
             }
         }
     }
