@@ -1,5 +1,7 @@
 package utils;
 
+import services.TicketManager;
+
 import java.util.Scanner;
 import utils.ui.Prettier;
 
@@ -11,7 +13,7 @@ public class LineGetter {
 
     // * Nom del producte
     private static final int MIN_PRODUCT_NAME_LEN = 2;
-    private static final int MAX_PRODUCT_NAME_LEN = 15;
+    private static final int MAX_PRODUCT_NAME_LEN = TicketManager.MAX_PRODUCT_NAME_LEN;
 
     // #endregion
 
@@ -25,7 +27,7 @@ public class LineGetter {
     public static String getClientName() {
         String input;
 
-        while (true) {
+        do {
             System.out.print("Introdueixi el nom del client, si us plau: ");
             input = scanner.nextLine();
 
@@ -42,7 +44,7 @@ public class LineGetter {
 
             String msg = String.format("La longitud del nom introduït està fora del rang permès (%d-%d caràcters). Si us plau, torni a intentar-ho.", MIN_CLIENT_NAME_LEN, MAX_CLIENT_NAME_LEN);
             Prettier.warn(msg);
-        }
+        } while (true);
     }
 
     /**
@@ -51,7 +53,7 @@ public class LineGetter {
     public static String getProductName() {
         String input;
 
-        while (true) {
+        do {
             System.out.print("Introdueixi el nom del producte, si us plau: ");
             input = scanner.nextLine();
 
@@ -68,7 +70,7 @@ public class LineGetter {
 
             String msg = String.format("La longitud del nom introduït està fora del rang permès (%d-%d caràcters). Si us plau, torni a intentar-ho.", MIN_PRODUCT_NAME_LEN, MAX_PRODUCT_NAME_LEN);
             Prettier.warn(msg);
-        }
+        } while (true);
     }
 
     /** Obté el preu del producte (en €). */
@@ -76,7 +78,7 @@ public class LineGetter {
         String input;
         double value;
 
-        while (true) {
+        do {
             System.out.print("Introdueixi el preu del producte (EUR), si us plau: ");
             input = scanner.nextLine();
 
@@ -104,7 +106,7 @@ public class LineGetter {
             } catch (Exception e) {
                 Prettier.warn("Ha ocorregut un error desconegut. Si us plau, torni a intentar-ho.");
             }
-        }
+        } while (true);
     }
 
     /** Obté la quantitat d'unitats del producte. */
@@ -112,7 +114,7 @@ public class LineGetter {
         String input;
         int value;
 
-        while (true) {
+        do {
             System.out.print("Introdueixi la quantitat d'unitats del producte, si us plau: ");
             input = scanner.nextLine();
 
@@ -138,6 +140,6 @@ public class LineGetter {
             } catch (Exception e) {
                 Prettier.warn("Ha ocorregut un error desconegut. Si us plau, torni a intentar-ho.");
             }
-        }
+        } while (true);
     }
 }

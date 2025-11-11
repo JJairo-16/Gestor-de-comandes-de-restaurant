@@ -14,7 +14,7 @@ public class TicketMenu {
         boolean yes;
 
         // * Bucle principal
-        while (true) {
+        do {
             System.out.printf("%s (s/n)", prompt);
             input = scanner.nextLine();
 
@@ -31,7 +31,7 @@ public class TicketMenu {
             if (yes || input.equalsIgnoreCase("n")) {
                 return yes;
             }
-        }
+        } while (true);
     }
 
     public static void pause() {
@@ -64,7 +64,7 @@ public class TicketMenu {
         int value;
 
         // * Bucle principal
-        while (true) {
+        do {
             System.out.printf("Introdueixi una opció (%d-%d), si us plau: ", min, max);
             input = scanner.nextLine();
 
@@ -91,6 +91,6 @@ public class TicketMenu {
             } catch (Exception e) {
                 Prettier.warn("Ha ocorregut un error desconegut. Si us plau, torni a intentar-ho.");
             }
-        }
+        } while (true);
     }
 }

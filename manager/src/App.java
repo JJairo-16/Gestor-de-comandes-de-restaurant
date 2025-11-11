@@ -26,7 +26,7 @@ public class App {
         manager = new TicketManager();
         
         // * Bucle principal
-        while (true) {
+        do {
             cls.clear();
 
             // * Menú
@@ -97,7 +97,7 @@ public class App {
                     TicketMenu.pause();
                     break;
             }
-        }
+        } while (true);
 
         System.out.println();
         System.out.println(Ansi.BOLD + Ansi.MAGENTA + "FINS LA PROPERA!" + Ansi.RESET);
@@ -118,7 +118,7 @@ public class App {
 
         boolean willContinue;
 
-        while (true) {
+        do {
             name = LineGetter.getProductName();
             price = LineGetter.getProductPrice();
             quantity = LineGetter.getProductQuantity();
@@ -131,6 +131,6 @@ public class App {
             }
             
             System.out.println();
-        }
+        } while (true);
     }
 }
