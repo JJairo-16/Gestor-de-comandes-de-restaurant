@@ -19,6 +19,12 @@ Mostra un menú amb les següents opcions:
 
 ---
 
+## Entregues parcials
+
+* PE5 I – [v1.1](https://github.com/JJairo-16/Gestor-de-comandes-de-restaurant/releases/tag/v1.1)
+
+---
+
 ## Llicència
 
 Aquest programa està baix la llicencia [MIT](LICENSE).

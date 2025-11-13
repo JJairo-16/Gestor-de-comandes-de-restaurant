@@ -132,8 +132,12 @@ public class TicketManager {
 
     /**
      * Dona format a les línies dels totals (amb tabulacions).
+     * 
+     * @param label → Etiqueta del preu.
+     * @param price → Valor del preu.
+     * @param padding → Padding entre el preu i les unitats (EUR).
      */
-    private String formatPrice(String label, double price) {
+    private String formatPrice(String label, double price, int padding) {
         StringBuilder line = new StringBuilder(label);
 
         // * Montar tabulacions
@@ -141,8 +145,26 @@ public class TicketManager {
         tabTo(line, col, STOP_SUB);
 
         // * Formar línea
-        line.append(String.format("%.2f EUR", price));
+        String pad = " ".repeat(padding);
+        line.append(String.format("%s%.2f EUR", pad, price));
         return line.toString() + "\n";
+    }
+
+    /**
+     * Dona format a les línies dels totals (amb tabulacions).
+     * 
+     * @param label → Etiqueta del preu.
+     * @param price → Valor del preu.
+     */
+    private String formatPrice(String label, double price) {
+        return formatPrice(label, price, 0);
+    }
+
+    /**
+     * Obté la quantitat de digits enters del nombre proporcionat.
+     */
+    private int getNumberLen(double n) {
+        return (int) Math.log10(n) + 1;
     }
 
     private String lineOf(char c, int length) {
@@ -203,6 +225,16 @@ public class TicketManager {
         double ivaAmount = baseTotal * (IVA / 100.0);
         double total = baseTotal + ivaAmount;
 
+        // * Calcular padding dels preus
+        // Calcular longituds
+        int baseTotalLen = getNumberLen(baseTotal);
+        int ivaAmountLen = getNumberLen(ivaAmount);
+        int totalLen = getNumberLen(total);
+
+        // Calcular padding
+        int baseTotalPad = totalLen - baseTotalLen;
+        int ivaAmountPad = totalLen - ivaAmountLen;
+
         // * Obtindre separadors
         String separator = lineOf('-', TICKET_WIDTH);
         String strongSeparator = lineOf('=', TICKET_WIDTH);
@@ -223,8 +255,8 @@ public class TicketManager {
         sb.append(separator).append("\n");
 
         // Totals
-        sb.append(formatPrice("Total sense IVA:", baseTotal));
-        sb.append(formatPrice("IVA (" + IVA + "%):", ivaAmount));
+        sb.append(formatPrice("Total sense IVA:", baseTotal, baseTotalPad));
+        sb.append(formatPrice("IVA (" + IVA + "%):", ivaAmount, ivaAmountPad));
         sb.append(formatPrice("Total amb IVA:", total));
         sb.append(strongSeparator);
 
